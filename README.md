@@ -2,7 +2,7 @@
 
 Фанатская летопись шоу [«Подземелья Чикен Карри»](https://www.youtube.com/playlist?list=PL7DDTrrh2mOUkSlkm68cn63MCqCR22wjN). Не связана с авторами шоу.
 
-- **Интерактивная карта сюжетных ветвей:** https://cutthecheese.games/pchk-chronicles/
+- **Интерактивная карта сюжетных ветвей:** https://pchk.world/
 - **Общий лор:** [lore.md](lore.md)
 - **Конспекты выпусков:** [summaries/](summaries/)
 
