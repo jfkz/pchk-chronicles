@@ -341,3 +341,22 @@ a.pc:hover{text-decoration:none}
 .cev.hl .card{border-color:var(--link); box-shadow:0 0 0 2px rgba(255,197,0,.35)}
 a.dbc{color:var(--text)}
 a.dbc:hover{text-decoration:none}
+
+/* телефоны */
+@media (max-width:640px){
+  nav.tabs{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent); mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent); padding-right:24px; scroll-behavior:smooth}
+  header.hero{padding-bottom:12px; margin-bottom:12px}
+  header.hero .lede{display:none}
+  .stats{gap:2px 16px; margin-top:8px; font-size:11px}
+  .stats b{font-size:15px; margin-right:4px}
+  .dbgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px}
+  .dbc .portrait{aspect-ratio:1/1}
+  .dbc .b{padding:7px 8px 9px}
+  .filters{gap:8px}
+  .filters input[type=search]{flex:1 1 100%; max-width:none}
+  .filters select{flex:1 1 calc(50% - 4px)}
+  .filters input[type=search],.filters select{font-size:16px; padding:9px 10px}
+  .btn{min-height:40px; align-items:center}
+  dialog#chardlg{padding:16px; width:calc(100vw - 16px); max-height:calc(100vh - 16px)}
+  footer{font-size:12px}
+}
