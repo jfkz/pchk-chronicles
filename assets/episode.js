@@ -126,7 +126,7 @@
     now.textContent = fmt(sec); watch.href = yt(sec);
     if (idx !== cur) {
       if (rows[cur]) rows[cur].classList.remove('on');
-      cur = idx; if (rows[cur]) { rows[cur].classList.add('on'); what.textContent = rows[cur].querySelector('.body').textContent; }
+      cur = idx; if (rows[cur]) { rows[cur].classList.add('on'); const b = rows[cur].querySelector('.body').cloneNode(true); b.querySelectorAll('.share').forEach(x => x.remove()); what.textContent = b.textContent.trim(); }
     }
   }
   function idxAt(sec) { let k = 0; rows.forEach((r, i) => { const s = r.dataset.sec; if (s !== '' && +s <= sec) k = i; }); return k; }
