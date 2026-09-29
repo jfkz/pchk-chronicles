@@ -360,3 +360,80 @@ a.dbc:hover{text-decoration:none}
   dialog#chardlg{padding:16px; width:calc(100vw - 16px); max-height:calc(100vh - 16px)}
   footer{font-size:12px}
 }
+
+/* характеристики */
+.statgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:8px; max-width:760px}
+.stat{background:var(--accent); border:1px solid var(--border); border-radius:4px; padding:8px 10px; text-align:center}
+.stat b{display:block; font:700 24px var(--mono); color:var(--text); font-variant-numeric:tabular-nums; line-height:1.2}
+.stat span{font:500 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.stat.main b{color:var(--link)}
+.statgrid.small{grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin:10px 0}
+.statgrid.small .stat{padding:5px 4px}
+.statgrid.small .stat b{font-size:17px}
+.statgrid.small .stat span{font-size:9.5px; letter-spacing:0}
+
+/* представления под спойлером */
+details.spoil{background:var(--accent); border:1px solid var(--border); border-radius:4px; margin-bottom:8px}
+details.spoil > summary{cursor:pointer; padding:9px 14px; list-style:none; display:flex; gap:8px; flex-wrap:wrap; align-items:baseline}
+details.spoil > summary::-webkit-details-marker{display:none}
+details.spoil > summary::before{content:"▸ Показать"; font:600 11px var(--mono); color:var(--link); text-transform:uppercase; letter-spacing:.06em; min-width:92px}
+details.spoil[open] > summary::before{content:"▾ Скрыть"}
+details.spoil blockquote{margin:0; padding:2px 16px 10px 20px; border-left:3px solid var(--link); margin-inline:14px; font-size:14.5px; line-height:1.65; color:var(--text); overflow-wrap:anywhere}
+details.spoil > p.note{margin:0; padding:0 14px 10px 34px}
+
+/* монеты участников */
+.coinline{font:13px var(--mono); color:var(--muted); margin:-2px 0 10px}
+.coinline .ce{color:var(--ok); font-weight:700; font-size:15px}
+.coinline .cs{color:var(--alert); font-weight:700; font-size:15px; margin-left:8px}
+.cointables{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; align-items:start}
+table.coins{border-collapse:collapse; width:100%; font-size:14px}
+table.coins th{font:600 11px var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--faint); text-align:left; padding:6px 8px; border-bottom:1px solid var(--border)}
+table.coins td{padding:6px 8px; border-bottom:1px solid rgba(80,67,78,.5)}
+table.coins .num{text-align:right; font-family:var(--mono); white-space:nowrap}
+table.coins td.num:nth-child(2){color:var(--ok)}
+table.coins td.num:nth-child(3){color:var(--alert)}
+
+/* карты */
+.mapwrap{overflow-x:auto; border:1px solid var(--border); border-radius:4px; background:#000}
+.imap{position:relative; min-width:900px; line-height:0}
+.imap > img{width:100%; height:auto; display:block}
+.hs{position:absolute; transform:translate(-50%,-50%); line-height:1.2; text-decoration:none}
+.hs i{display:block; width:16px; height:16px; border-radius:50%; background:var(--link); border:2px solid #000; box-shadow:0 0 0 2px rgba(255,197,0,.55); transition:transform .12s}
+.hs.region i{width:auto; height:auto; border-radius:3px; background:rgba(30,12,27,.82); color:var(--link); border:1px dashed var(--link); box-shadow:none; font:600 11px var(--mono); padding:2px 6px; white-space:nowrap}
+.hs .lb{position:absolute; left:50%; bottom:calc(100% + 6px); transform:translateX(-50%); white-space:nowrap; background:rgba(30,12,27,.95); color:var(--text); border:1px solid var(--link); border-radius:3px; font:600 12px var(--head); padding:3px 8px; opacity:0; pointer-events:none; transition:opacity .12s; z-index:3}
+.hs:hover,.hs:focus-visible{z-index:5; text-decoration:none}
+.hs:hover i,.hs:focus-visible i{transform:scale(1.35)}
+.hs:hover .lb,.hs:focus-visible .lb{opacity:1}
+.hs.region .lb{display:none}
+.hs.nolink{cursor:default}
+.hs.nolink i{background:var(--muted); box-shadow:none}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
+.chips a{font:500 12.5px var(--head); background:var(--accent); border:1px solid var(--border); border-radius:99px; padding:3px 11px; color:var(--text)}
+.chips a:hover{border-color:var(--link); text-decoration:none; color:var(--link)}
+.mapgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px}
+.mapcard{background:var(--accent); border:1px solid var(--border); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; padding:0; text-align:left; color:var(--text); cursor:pointer; font:inherit}
+.mapcard:hover{border-color:var(--link)}
+.mapcard img{width:100%; aspect-ratio:16/10; object-fit:cover; background:#000; display:block}
+.mapcard .t{padding:8px 12px 10px}
+.mapcard b{display:block; font:600 14px var(--head)}
+.mapcard small{display:block; color:var(--muted); font-size:12.5px; line-height:1.4; margin-top:2px}
+dialog#mapdlg{background:var(--page); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:14px; width:min(1500px,96vw); max-height:96vh}
+dialog#mapdlg::backdrop{background:rgba(0,0,0,.85)}
+dialog#mapdlg img{max-width:100%; max-height:76vh; display:block; margin:0 auto; background:#000}
+dialog#mapdlg h3{font-size:18px; margin:0 0 4px}
+dialog#mapdlg .x{float:right}
+.minimap{position:relative; max-width:560px; line-height:0; border:1px solid var(--border); border-radius:4px; overflow:hidden}
+.minimap img{width:100%; display:block}
+.minimap .pin{position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:var(--alert); border:2px solid #fff; box-shadow:0 0 0 4px rgba(255,77,94,.4)}
+
+/* места и артефакты */
+.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px}
+a.card2{display:flex; gap:12px; background:var(--accent); border:1px solid var(--border); border-radius:4px; padding:10px 12px; color:var(--text); align-items:flex-start}
+a.card2:hover{border-color:var(--link); text-decoration:none}
+a.card2 img,a.card2 .ph{width:64px; height:64px; flex:none; object-fit:cover; border-radius:3px; background:var(--page2); border:1px solid var(--border); display:grid; place-items:center; font:700 20px var(--head); color:var(--faint)}
+a.card2 b{display:block; font:600 15px var(--head)}
+a.card2 small{display:block; color:var(--muted); font-size:12.5px; line-height:1.4}
+.pic{max-width:320px; width:100%; border-radius:4px; border:1px solid var(--border); background:#000}
+.tag.ok{color:var(--ok); border-color:var(--ok)}
+.hist{list-style:none; margin:0; padding:0; display:grid; gap:6px}
+.hist li{padding:8px 12px; background:var(--accent); border:1px solid var(--border); border-left:3px solid var(--link); border-radius:3px}
