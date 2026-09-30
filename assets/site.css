@@ -455,3 +455,14 @@ details.spoil blockquote p:last-child{margin:0}
 .watch-plot .tc{font:600 12px var(--mono); color:var(--link); margin-right:6px}
 @media (max-width:900px){.watch{grid-template-columns:1fr}}
 .ytb.anim{background:#b48cf0; margin-left:6px}
+
+.cards{grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; min-height:66px}
+.pcard{display:flex; align-items:center; gap:9px; padding:5px 12px 5px 5px; border:1px solid var(--border); border-radius:6px; background:rgba(0,0,0,.25); transition:border-color .15s, box-shadow .15s, transform .15s, opacity .3s}
+.pcard img{width:52px; height:52px; border-radius:5px; object-fit:cover; object-position:50% 6%; background:rgba(0,0,0,.35)}
+.pcard .pt{display:flex; flex-direction:column; line-height:1.25; min-width:0}
+.pcard .pt b{font:600 13.5px var(--head)}
+.pcard .pt span{font-size:11.5px; color:var(--faint)}
+.pcard .pst{font-size:11px; font-style:normal; color:#f3d58a; min-height:0}
+.pcard.hero{border-color:rgba(232,182,76,.35)}
+.pcard.on{border-color:#ffd65a; box-shadow:0 0 0 2px rgba(255,214,90,.55), 0 0 14px rgba(255,214,90,.45); transform:translateY(-2px); background:rgba(255,214,90,.12)}
+.pcard.down{opacity:.45; filter:grayscale(.7)}

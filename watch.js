@@ -23,12 +23,13 @@ function load(name, src) {
   return img[name];
 }
 
-let TL, MAN, scenes = [], events = [];
+let TL, MAN, INFO = {}, scenes = [], events = [];
 Promise.all([fetch(base + "timeline.json").then(r => r.json()), fetch(base + "manifest.json").then(r => r.json())]).then(([tl, man]) => {
   TL = tl; MAN = man; scenes = tl.scenes.slice().sort((a, b) => a.t - b.t);
   events = tl.events.slice().sort((a, b) => a.t - b.t);
   Object.keys(man.sprites).forEach(k => load("s:" + k, base + "sprites/" + k + ".webp"));
   Object.keys(man.bgs).forEach(k => load("b:" + k, base + "bg/" + k + ".webp"));
+  INFO = tl.info || {};
   buildPlot(tl.plot || []);
   requestAnimationFrame(frame);
 });
@@ -82,7 +83,7 @@ const px = x => x / 100 * W;
 
 function simulate(t) {
   const sc = sceneAt(t), i = scenes.indexOf(sc), end = i + 1 < scenes.length ? scenes[i + 1].t : 1e9;
-  const A = {}, fx = [], bubbles = [], floats = [];
+  const A = {}, fx = [], bubbles = [], floats = [], act = {};
   const get = id => A[id] || (A[id] = { id, x: 50, face: 1, vis: false, alive: true, mv: null, hitAt: -9, status: null, look: null, lunge: null, dieAt: null, reviveAt: null });
   for (const [id, c] of Object.entries(sc.cast || {})) { const a = get(id); a.x = c.x; a.vis = true; a.look = c.look || null; a.face = c.face || (c.x > 62 ? -1 : 1); }
   const X = (a, tm) => { const m = a.mv; if (!m) return a.x; const p = clamp((tm - m.t0) / m.dur, 0, 1); return m.x0 + (m.x1 - m.x0) * ease(p); };
@@ -101,24 +102,26 @@ function simulate(t) {
         a.face = tx >= cur ? 1 : -1;
         a.lunge = { t0: e.t, dur: e.dur || 1, from: cur, to: tx - a.face * 9, kind: e.kind || "melee" };
         tg.hitAt = e.t + (e.dur || 1) * .5; tg.hitDir = a.face;
+        act[e.id] = Math.max(act[e.id] || 0, e.t + (e.dur || 1)); act[e.target] = Math.max(act[e.target] || 0, e.t + (e.dur || 1) * .5 + 1);
         floats.push({ id: e.target, text: e.dmg, t0: e.t + (e.dur || 1) * .5 });
         if (e.kind === "shot" || e.kind === "spell") fx.push({ kind: e.kind === "shot" ? "shot" : "spellbolt", x0: cur, x1: tx, t0: e.t, dur: (e.dur || 1) * .5, id: e.id });
         break;
       }
-      case "hurt": { const tg = get(e.id); tg.hitAt = e.t; tg.hitDir = 0; floats.push({ id: e.id, text: e.dmg, t0: e.t }); break; }
+      case "hurt": { const tg = get(e.id); act[e.id] = Math.max(act[e.id] || 0, e.t + 1.2); tg.hitAt = e.t; tg.hitDir = 0; floats.push({ id: e.id, text: e.dmg, t0: e.t }); break; }
       case "die": a.alive = false; a.dieAt = e.t; a.x = cur; a.mv = null; break;
       case "revive": a.alive = true; a.reviveAt = e.t; break;
       case "status": a.status = e.kind === "none" ? null : e.kind; break;
       case "look": a.look = e.as === "none" ? null : e.as; break;
-      case "say": bubbles.push({ id: e.id, text: e.text, t0: e.t, dur: e.dur || 3 }); break;
+      case "say": bubbles.push({ id: e.id, text: e.text, t0: e.t, dur: e.dur || 3 }); act[e.id] = Math.max(act[e.id] || 0, e.t + (e.dur || 3)); break;
       case "fx": fx.push({ kind: e.kind, x: e.x, t0: e.t, dur: e.dur || 2, id: e.id }); break;
     }
   }
-  return { sc, i, end, A, fx, bubbles, floats, X };
+  const active = Object.keys(act).filter(id => act[id] > t);
+  return { sc, i, end, A, fx, bubbles, floats, X, active };
 }
 
 // ---------- отрисовка ----------
-const baseY = id => GROUND + (hashy(id) % 5) * 13 - 14;
+const baseY = id => id === "cart" ? GROUND + 34 : GROUND + (hashy(id) % 5) * 13 - 14;
 function drawBg(name, alpha = 1) {
   const im = img["b:" + name]; if (!im || !im.complete || !im.naturalWidth) { ctx.fillStyle = "#222"; ctx.fillRect(0, 0, W, H); return; }
   const r = Math.max(W / im.naturalWidth, H / im.naturalHeight), w = im.naturalWidth * r, h = im.naturalHeight * r;
@@ -148,7 +151,7 @@ function drawSprite(key, x, y, o) {
 }
 function shadow(x, y, w, a = .35) { ctx.save(); ctx.fillStyle = `rgba(0,0,0,${a})`; ctx.beginPath(); ctx.ellipse(x, y - 2, w * .42, w * .09, 0, 0, 7); ctx.fill(); ctx.restore(); }
 
-const BADGE = { paralyzed: "парализован", sleep: "спит", naked: "голый", stun: "оглушён", shrunk: "уменьшен" };
+const BADGE = { paralyzed: "парализован", sleep: "спит", nakedsleep: "спит голый", naked: "голый", stun: "оглушён", shrunk: "уменьшен" };
 function drawActors(S, t) {
   const list = Object.values(S.A).filter(a => a.vis || a.mv);
   const info = {};
@@ -191,6 +194,14 @@ function wrap(text, maxW) {
   const words = String(text).split(/\s+/), lines = []; let cur = "";
   for (const w of words) { const tt = cur ? cur + " " + w : w; if (ctx.measureText(tt).width > maxW && cur) { lines.push(cur); cur = w; } else cur = tt; }
   if (cur) lines.push(cur); return lines;
+}
+function drawActive(S, t, info) {
+  for (const id of S.active) {
+    const p = info[id]; if (!p) continue;
+    const k = .75 + .25 * Math.sin(t * 6);
+    ctx.save(); ctx.strokeStyle = `rgba(255,214,90,${k})`; ctx.lineWidth = 4; ctx.shadowColor = "#ffd65a"; ctx.shadowBlur = 14;
+    ctx.beginPath(); ctx.ellipse(p.x, p.y - 2, Math.max(p.h * .3, 50), 14, 0, 0, 7); ctx.stroke(); ctx.restore();
+  }
 }
 function drawBubbles(S, t, info) {
   for (const b of S.bubbles) {
@@ -268,11 +279,50 @@ function drawMap(S, t) {
   for (const n of order) { const p = N[n]; ctx.fillStyle = "#2a1d12"; ctx.beginPath(); ctx.arc(px(p.x), p.y / 100 * H, 9, 0, 7); ctx.fill(); ctx.fillStyle = "#f3d58a"; ctx.beginPath(); ctx.arc(px(p.x), p.y / 100 * H, 5, 0, 7); ctx.fill();
     ctx.font = "700 22px Georgia,serif"; ctx.textAlign = "center"; ctx.lineWidth = 5; ctx.strokeStyle = "rgba(245,230,190,.95)"; ctx.strokeText(p.name, px(p.x), p.y / 100 * H + 34); ctx.fillStyle = "#2a1d12"; ctx.fillText(p.name, px(p.x), p.y / 100 * H + 34); }
   ctx.restore();
+  if (sc.cart && img["s:cart"] && img["s:cart"].naturalWidth) {
+    const ci = img["s:cart"], ch = 100, cw = ci.naturalWidth * ch / ci.naturalHeight;
+    ctx.save(); ctx.translate(cx, cy + 6 - Math.abs(Math.sin(t * 5)) * 2); if (b.x < a.x) ctx.scale(-1, 1); ctx.drawImage(ci, -cw / 2, -ch, cw, ch); ctx.restore();
+  }
   HEROES.forEach((h, i) => { const meta = MAN.sprites[h]; const s2 = 0.42; const im = img["s:" + h]; if (!im || !im.naturalWidth) return;
-    const hh = meta.h * s2, ww = im.naturalWidth * hh / im.naturalHeight, bob = Math.abs(Math.sin(t * 6 + i)) * 4;
-    ctx.save(); ctx.translate(cx + (i - 2) * 26, cy - bob + (i % 2) * 8); ctx.fillStyle = "rgba(0,0,0,.3)"; ctx.beginPath(); ctx.ellipse(0, 0, ww * .45, 6, 0, 0, 7); ctx.fill();
+    const lift = sc.cart ? 34 : 0, hh = meta.h * s2 * (sc.cart ? .8 : 1), ww = im.naturalWidth * hh / im.naturalHeight, bob = Math.abs(Math.sin(t * 6 + i)) * 4;
+    ctx.save(); ctx.translate(cx + (i - 2) * (sc.cart ? 14 : 26), cy - bob - lift + (i % 2) * 8); ctx.fillStyle = "rgba(0,0,0,.3)"; ctx.beginPath(); ctx.ellipse(0, 0, ww * .45, 6, 0, 0, 7); ctx.fill();
     if (b.x < a.x) ctx.scale(-1, 1); ctx.drawImage(im, -ww / 2, -hh, ww, hh); ctx.restore(); });
 }
+
+
+// ---------- карточки персонажей под сценой ----------
+const cardsEl = document.getElementById("cards");
+let cardSig = "", cardEls = {};
+function updateCards(S, t) {
+  const ids = Object.values(S.A).filter(a => a.vis && !(a.mv && a.mv.gone && t >= a.mv.t0 + a.mv.dur) && INFO[a.id] && !INFO[a.id].hidden && S.sc.bg !== "map").map(a => a.id);
+  if (S.sc.bg === "map") HEROES.forEach(h => ids.push(h));
+  const order = id => (HEROES.indexOf(id) >= 0 ? HEROES.indexOf(id) : 10 + Object.keys(INFO).indexOf(id));
+  ids.sort((a, b) => order(a) - order(b));
+  const sig = ids.join(",");
+  if (sig !== cardSig) {
+    cardSig = sig; cardEls = {};
+    cardsEl.innerHTML = "";
+    for (const id of ids) {
+      const inf = INFO[id], base = SPRITE_OF[id] && !MAN.sprites[id] ? SPRITE_OF[id] : id;
+      const d = document.createElement("div"); d.className = "pcard" + (HEROES.includes(id) ? " hero" : "");
+      const im = document.createElement("img"); im.src = base_url(base); im.alt = ""; im.loading = "lazy";
+      const tx = document.createElement("div"); tx.className = "pt";
+      const nm = document.createElement("b"); nm.textContent = inf.name; tx.appendChild(nm);
+      if (inf.actor || inf.role) { const sp = document.createElement("span"); sp.textContent = inf.actor || inf.role; tx.appendChild(sp); }
+      const st = document.createElement("i"); st.className = "pst"; tx.appendChild(st);
+      d.append(im, tx); cardsEl.appendChild(d); cardEls[id] = { d, st };
+    }
+  }
+  const act = new Set(S.active);
+  for (const id of ids) {
+    const c = cardEls[id], a = S.A[id]; if (!c) continue;
+    c.d.classList.toggle("on", act.has(id));
+    c.d.classList.toggle("down", !!a && !a.alive);
+    const lab = a && !a.alive ? "повержен" : a && a.status && BADGE[a.status] ? BADGE[a.status] : a && a.status === "nakedsleep" ? "спит голый" : "";
+    if (c.st.textContent !== lab) c.st.textContent = lab;
+  }
+}
+const base_url = k => base + "sprites/" + k + ".webp";
 
 // ---------- кадр ----------
 let fadeAt = -99, lastSceneId = null;
@@ -287,9 +337,11 @@ function frame() {
     // лёгкое затемнение по краям для читаемости
     const v = ctx.createLinearGradient(0, H * .55, 0, H); v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,0,0,.35)"); ctx.fillStyle = v; ctx.fillRect(0, H * .55, W, H * .45);
     const info = drawActors(S, t);
-    drawFx(S, t, info); drawFloats(S, t, info); drawBubbles(S, t, info);
+    drawActive(S, t, info); drawFx(S, t, info); drawFloats(S, t, info); drawBubbles(S, t, info);
+    S.info = info;
   }
   const fd = (performance.now() - fadeAt) / 450; if (fd < 1) { ctx.fillStyle = `rgba(8,6,12,${1 - fd})`; ctx.fillRect(0, 0, W, H); }
+  updateCards(S, t);
   markPlot(t);
   requestAnimationFrame(frame);
 }
