@@ -440,3 +440,18 @@ a.card2 small{display:block; color:var(--muted); font-size:12.5px; line-height:1
 
 details.spoil blockquote p{margin:0 0 .7em}
 details.spoil blockquote p:last-child{margin:0}
+
+/* страница просмотра с анимацией */
+.watch{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:16px; align-items:start; margin-top:14px}
+.watch-video,.watch-stage{min-width:0}
+.vbox,.sbox{position:relative; width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--border); border-radius:4px; overflow:hidden}
+.vbox iframe,.vbox > div{position:absolute; inset:0; width:100%; height:100%}
+#stage{position:absolute; inset:0; width:100%; height:100%; display:block}
+.caption{position:absolute; left:10px; top:10px; padding:4px 10px; background:rgba(20,14,30,.75); color:#f3d58a; font:600 14px var(--head); border-radius:3px; pointer-events:none}
+.watch-plot{grid-column:1 / -1; list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:6px 14px}
+.watch-plot li button{all:unset; box-sizing:border-box; cursor:pointer; display:block; width:100%; padding:7px 10px; border:1px solid var(--border); border-radius:3px; font-size:13.5px; line-height:1.4}
+.watch-plot li button:hover{border-color:var(--link)}
+.watch-plot li.now button{border-color:var(--link); background:rgba(232,182,76,.12)}
+.watch-plot .tc{font:600 12px var(--mono); color:var(--link); margin-right:6px}
+@media (max-width:900px){.watch{grid-template-columns:1fr}}
+.ytb.anim{background:#b48cf0; margin-left:6px}

@@ -42,6 +42,7 @@
       <p class="lead">${D.short_html}</p>
       <div class="ep-nav">
         <a class="ytb" href="${yt()}" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
+        ${D.anim ? `<a class="ytb anim" href="/watch/${esc(D.key)}/">🎭 Смотреть с анимацией</a>` : ''}
         <button class="btn" data-copy="${epUrl(D.key)}">Скопировать ссылку</button>
         ${D.prev ? `<a class="btn" href="${epUrl(D.prev.key)}">← #${esc(D.prev.label)}</a>` : ''}
         ${D.next ? `<a class="btn" href="${epUrl(D.next.key)}">#${esc(D.next.label)} →</a>` : ''}
