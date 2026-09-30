@@ -442,7 +442,7 @@ details.spoil blockquote p{margin:0 0 .7em}
 details.spoil blockquote p:last-child{margin:0}
 
 /* страница просмотра с анимацией */
-.watch{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:16px; align-items:start; margin-top:14px}
+.watch{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start; margin-top:14px}
 .watch-video,.watch-stage{min-width:0}
 .vbox,.sbox{position:relative; width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--border); border-radius:4px; overflow:hidden}
 .vbox iframe,.vbox > div{position:absolute; inset:0; width:100%; height:100%}

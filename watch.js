@@ -8,8 +8,14 @@ const cv = document.getElementById("stage"), ctx = cv.getContext("2d");
 const capEl = document.getElementById("caption"), plotEl = document.getElementById("plot");
 cv.width = W; cv.height = H;
 
-const SPRITE_OF = { peasant1: "shlepa", peasant2: "shlepa", peasant3: "shlepa", didi: "lyosha",
-  zombie1: "zombie", zombie2: "zombie", zombie3: "zombie", angel1: "angel", angel2: "angel", angel3: "angel" };
+// запасные спрайты, если для персонажа нет своего
+const SPRITE_OF = { peasant1: "farmer1", peasant2: "farmer2", peasant3: "farmer3", zombie1: "zombie", zombie2: "zombie", zombie3: "zombie", angel1: "angel" };
+// какой спрайт рисовать: вариант по «облику» (look) или статусу — если такая картинка есть, иначе базовая
+function spriteKey(a) {
+  const base = SPRITE_OF[a.id] && !MAN.sprites[a.id] ? SPRITE_OF[a.id] : a.id;
+  for (const v of [a.look, a.status]) if (v && MAN.sprites[a.id + "_" + v]) return a.id + "_" + v;
+  return MAN.sprites[base] ? base : "shlepa";
+}
 const HEROES = ["sofia", "yulian", "vitya", "bagira", "titus"];
 const img = {};                                 // кэш картинок
 function load(name, src) {
@@ -77,8 +83,8 @@ const px = x => x / 100 * W;
 function simulate(t) {
   const sc = sceneAt(t), i = scenes.indexOf(sc), end = i + 1 < scenes.length ? scenes[i + 1].t : 1e9;
   const A = {}, fx = [], bubbles = [], floats = [];
-  const get = id => A[id] || (A[id] = { id, x: 50, face: 1, vis: false, alive: true, mv: null, hitAt: -9, status: null, lunge: null, dieAt: null, reviveAt: null });
-  for (const [id, c] of Object.entries(sc.cast || {})) { const a = get(id); a.x = c.x; a.vis = true; a.face = c.face || (c.x > 62 ? -1 : 1); }
+  const get = id => A[id] || (A[id] = { id, x: 50, face: 1, vis: false, alive: true, mv: null, hitAt: -9, status: null, look: null, lunge: null, dieAt: null, reviveAt: null });
+  for (const [id, c] of Object.entries(sc.cast || {})) { const a = get(id); a.x = c.x; a.vis = true; a.look = c.look || null; a.face = c.face || (c.x > 62 ? -1 : 1); }
   const X = (a, tm) => { const m = a.mv; if (!m) return a.x; const p = clamp((tm - m.t0) / m.dur, 0, 1); return m.x0 + (m.x1 - m.x0) * ease(p); };
   for (const e of events) {
     if (e.t < sc.t || e.t >= end) continue;
@@ -103,6 +109,7 @@ function simulate(t) {
       case "die": a.alive = false; a.dieAt = e.t; a.x = cur; a.mv = null; break;
       case "revive": a.alive = true; a.reviveAt = e.t; break;
       case "status": a.status = e.kind === "none" ? null : e.kind; break;
+      case "look": a.look = e.as === "none" ? null : e.as; break;
       case "say": bubbles.push({ id: e.id, text: e.text, t0: e.t, dur: e.dur || 3 }); break;
       case "fx": fx.push({ kind: e.kind, x: e.x, t0: e.t, dur: e.dur || 2, id: e.id }); break;
     }
@@ -118,15 +125,17 @@ function drawBg(name, alpha = 1) {
   ctx.globalAlpha = alpha; ctx.drawImage(im, (W - w) / 2, (H - h) / 2, w, h); ctx.globalAlpha = 1;
 }
 const tintCv = document.createElement("canvas"), tintCtx = tintCv.getContext("2d");
-function drawSprite(id, x, y, o) {
-  const key = SPRITE_OF[id] || id, im = img["s:" + key], meta = MAN.sprites[key];
+function drawSprite(key, x, y, o) {
+  const im = img["s:" + key], meta = MAN.sprites[key];
   if (!im || !im.complete || !im.naturalWidth) return null;
-  const h = meta.h * (o.scale || 1), w = im.naturalWidth * h / im.naturalHeight;
+  let h = (meta.h || 0) * (o.scale || 1), w = im.naturalWidth * h / im.naturalHeight;
+  if (meta.w) { w = meta.w * (o.scale || 1); h = im.naturalHeight * w / im.naturalWidth; }   // лежачие — по ширине
   ctx.save();
   ctx.translate(x, y + (o.dy || 0));
   if (o.rot) ctx.rotate(o.rot);
   if (o.face < 0) ctx.scale(-1, 1);
   ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+  if (o.frozen) ctx.filter = "grayscale(.8) brightness(1.15) sepia(.3) hue-rotate(170deg)";
   if (o.tint) {
     tintCv.width = Math.ceil(w); tintCv.height = Math.ceil(h);
     tintCtx.clearRect(0, 0, w, h); tintCtx.drawImage(im, 0, 0, w, h);
@@ -163,11 +172,11 @@ function drawActors(S, t) {
     return { a, x: px(x) + off, y: baseY(a.id), vis, alpha, dy, rot, tint, face, scale };
   }).filter(r => r.vis).sort((p, q) => p.y - q.y);
   for (const r of rows) {
-    const key = SPRITE_OF[r.a.id] || r.a.id, meta = MAN.sprites[key] || { h: 280 };
-    shadow(r.x, r.y, meta.h * .5, r.a.alive ? .35 : .2);
-    const sz = drawSprite(r.a.id, r.x, r.y, { face: r.face, alpha: r.alpha, dy: r.dy, rot: r.rot, tint: r.tint });
+    const key = spriteKey(r.a), meta = MAN.sprites[key] || { h: 280 }, variant = key !== r.a.id && MAN.sprites[r.a.id + "_" + (r.a.look || r.a.status)];
+    shadow(r.x, r.y, meta.w ? meta.w * .8 : meta.h * .5, r.a.alive ? .35 : .2);
+    const sz = drawSprite(key, r.x, r.y, { face: r.face, alpha: r.alpha, dy: r.dy, rot: r.rot, tint: r.tint, frozen: r.a.status === "paralyzed" && !variant });
     info[r.a.id] = { x: r.x, y: r.y, top: r.y + r.dy - (sz ? sz.h : meta.h), h: sz ? sz.h : meta.h };
-    if (r.a.status && BADGE[r.a.status] && r.a.alive) badge(BADGE[r.a.status], r.x, info[r.a.id].top - 6);
+    if (r.a.status && BADGE[r.a.status] && r.a.alive && !variant) badge(BADGE[r.a.status], r.x, info[r.a.id].top - 6);
   }
   return info;
 }
