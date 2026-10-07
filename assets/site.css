@@ -458,7 +458,7 @@ details.spoil blockquote p:last-child{margin:0}
 @media (max-width:900px){.watch{grid-template-columns:1fr}}
 .ytb.anim{background:#b48cf0; margin-left:6px}
 
-.cards{grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; min-height:66px}
+.watch .cards{grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; min-height:66px}
 .pcard{display:flex; align-items:center; gap:9px; padding:5px 12px 5px 5px; border:1px solid var(--border); border-radius:6px; background:rgba(0,0,0,.25); transition:border-color .15s, box-shadow .15s, transform .15s, opacity .3s}
 .pcard img{width:52px; height:52px; border-radius:5px; object-fit:cover; object-position:50% 6%; background:rgba(0,0,0,.35)}
 .pcard .pt{display:flex; flex-direction:column; line-height:1.25; min-width:0}
