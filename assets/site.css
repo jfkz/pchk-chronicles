@@ -256,7 +256,8 @@ footer{margin-top:26px; padding-top:14px; border-top:1px solid var(--border); fo
 .ep-sec > h2 small{font:500 12px var(--mono); color:var(--faint)}
 .ep-toc{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px}
 .ep-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px}
-.party-tag{margin:0 0 16px; padding-left:12px; border-left:3px solid var(--link); color:var(--muted); font-style:italic; max-width:90ch}
+.party-line{margin:0 0 16px; font-size:14px}
+.party-line span, .party-line span a{color:var(--muted)}
 
 /* таймлайн выпуска */
 .scrub{position:sticky; top:calc(env(safe-area-inset-top,0px) + 53px); z-index:5; background:rgba(var(--page-rgb),.98); border:1px solid var(--border); border-radius:4px; padding:12px 14px 10px; box-shadow:0 6px 16px rgba(0,0,0,.45)}
