@@ -54,6 +54,7 @@
   </header>
 
   <section class="ep-sec" id="story"><h2>История</h2>
+    ${D.party_html ? `<p class="party-tag">${D.party_html}</p>` : ''}
     <div class="ep-cols">
       <div><p style="margin:0">${D.summary_html}</p>${D.outcome_html ? `<div class="sec"><h3>Итог</h3><p style="margin:0">${D.outcome_html}</p></div>` : ''}</div>
       ${D.world_html.length ? `<div class="sec" style="margin:0"><h3>Что изменилось в мире</h3><ul class="plain">${D.world_html.map(w => `<li>— ${w}</li>`).join('')}</ul></div>` : ''}
