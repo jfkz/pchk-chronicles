@@ -240,6 +240,8 @@ dialog .x{position:sticky; top:0; float:right; background:var(--accent); color:v
 .mx td span{display:inline-block; width:13px; height:13px; border-radius:3px; background:var(--c)}
 .mx td span.gone{background:none; border:2px solid var(--alert)}
 .mx tbody tr:nth-child(odd) td{background:rgba(255,255,255,.03)}
+.comments{margin-top:26px}
+.comments h2{font-size:20px; margin-bottom:12px}
 footer{margin-top:26px; padding-top:14px; border-top:1px solid var(--border); font-size:13px; color:var(--faint)}
 @media (prefers-reduced-motion:no-preference){.stn circle.o{transition:stroke-width .15s}}
 

@@ -106,7 +106,16 @@
   </section>
 
   <nav class="ep-foot-nav">${D.prev ? `<a class="btn" href="${epUrl(D.prev.key)}">← #${esc(D.prev.label)} ${esc(D.prev.title)}</a>` : '<span></span>'}${D.next ? `<a class="btn" href="${epUrl(D.next.key)}">#${esc(D.next.label)} ${esc(D.next.title)} →</a>` : ''}</nav>
+  ${D.comments ? '<section class="ep-sec comments" id="comments"><h2>Обсуждение</h2></section>' : ''}
   <footer>${D.footer}</footer>`;
+
+  /* comments.app встаёт на место своего скрипта; из innerHTML скрипты не запускаются, поэтому добавляем отдельно */
+  if (D.comments) {
+    const s = document.createElement('script');
+    s.async = true; s.src = 'https://comments.app/js/widget.js?3';
+    for (const [k, v] of Object.entries(D.comments)) s.setAttribute(k, v);
+    $('#comments').appendChild(s);
+  }
 
   function person(p) {
     const pic = p.url ? `<a href="${esc(p.url)}" tabindex="-1">${img(p.img, 'portrait', p.name)}</a>` : img(p.img, 'portrait', p.name);
