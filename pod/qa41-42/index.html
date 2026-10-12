@@ -62,6 +62,11 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
 }));
 </script>
 <script>
+document.addEventListener('click', e => {
+  const b = e.target.closest('button.fn'); if (!b) return;
+  const t = b.nextElementSibling; if (!t || !t.classList.contains('fnb')) return;
+  t.hidden = !t.hidden; b.setAttribute('aria-expanded', String(!t.hidden));
+});
 document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', e => {
   const b = e.target.closest('.ptf'); if (!b) return;
   f.querySelectorAll('.ptf').forEach(x => x.classList.toggle('on', x === b));

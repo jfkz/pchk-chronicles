@@ -111,6 +111,12 @@
   ${D.comments ? '<section class="ep-sec comments" id="comments"><h2>Обсуждение</h2></section>' : ''}
   <footer>${D.footer}</footer>`;
 
+  /* сноски из подкастов: номер раскрывает скрытый текст записи */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('button.fn'); if (!b) return;
+    const t = b.nextElementSibling; if (!t || !t.classList.contains('fnb')) return;
+    t.hidden = !t.hidden; b.setAttribute('aria-expanded', String(!t.hidden));
+  });
   /* фильтр записей подкастов по типу */
   document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', e => {
     const b = e.target.closest('.ptf'); if (!b) return;
@@ -133,6 +139,7 @@
       <div><h3>${link(p.url, p.name)}</h3>
         <div class="sub">${[p.actor ? link(p.actor_url, p.actor) : '', esc(p.race || p.role)].filter(Boolean).join(' · ')}</div>
         ${p.fate ? `<div class="${isDead(p.fate) ? 'fate d' : 'fate'}" style="margin-top:3px">${esc(p.fate)}</div>` : ''}
+        ${p.fn_html ? `<div class="fnrow">${p.fn_html}</div>` : ''}
         ${p.other.length ? `<div class="other"><span class="lbl">Ещё в:</span>${p.other.map(o => epLink(o.key, o.label, o.title)).join('')}</div>` : ''}
       </div></article>`;
   }
