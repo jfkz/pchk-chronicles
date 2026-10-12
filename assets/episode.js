@@ -30,6 +30,7 @@
   for (let s = stepT; s < T - 300; s += stepT) ticks.push(s);
 
   const toc = [['story', 'История'], ['timeline', 'Таймлайн'], ['coins', 'Монеты'], ['people', 'Персонажи'], ['links', 'Связи'], ['world', 'Мир и цитаты']];
+  if (D.pod_html) toc.push(['pod', 'Из подкастов']);
 
   $('#app').innerHTML = `
   <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/#eps">Выпуски</a> › #${esc(D.label)}</div>
@@ -104,10 +105,18 @@
     </div>
     <p class="note" style="margin-top:16px">Полный конспект: <a href="/summaries/ep${esc(D.key)}.md">summaries/ep${esc(D.key)}.md</a></p>
   </section>
+  ${D.pod_html || ''}
 
   <nav class="ep-foot-nav">${D.prev ? `<a class="btn" href="${epUrl(D.prev.key)}">← #${esc(D.prev.label)} ${esc(D.prev.title)}</a>` : '<span></span>'}${D.next ? `<a class="btn" href="${epUrl(D.next.key)}">#${esc(D.next.label)} ${esc(D.next.title)} →</a>` : ''}</nav>
   ${D.comments ? '<section class="ep-sec comments" id="comments"><h2>Обсуждение</h2></section>' : ''}
   <footer>${D.footer}</footer>`;
+
+  /* фильтр записей подкастов по типу */
+  document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', e => {
+    const b = e.target.closest('.ptf'); if (!b) return;
+    f.querySelectorAll('.ptf').forEach(x => x.classList.toggle('on', x === b));
+    f.parentElement.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
+  }));
 
   /* comments.app встаёт на место своего скрипта; из innerHTML скрипты не запускаются, поэтому добавляем отдельно */
   if (D.comments) {

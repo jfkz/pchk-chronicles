@@ -474,3 +474,34 @@ details.spoil blockquote p:last-child{margin:0}
 .pcard.hero{border-color:rgba(232,182,76,.35)}
 .pcard.on{border-color:#ffd65a; box-shadow:0 0 0 2px rgba(255,214,90,.55), 0 0 14px rgba(255,214,90,.45); transform:translateY(-2px); background:rgba(255,214,90,.12)}
 .pcard.down{opacity:.45; filter:grayscale(.7)}
+
+/* записи подкастов */
+.t-addition{--pt:#7fd49b} .t-clarification{--pt:#6fb7ff} .t-retcon{--pt:#c792ff} .t-error{--pt:#ff4d5e}
+.t-correction{--pt:#ff9d4d} .t-plan{--pt:#4fd1c5} .t-backstage{--pt:#b9adb6}
+.ptfilter{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
+.ptf.on{border-color:var(--link); background:var(--accent-h)}
+.ptf[class*="t-"]{border-left:3px solid var(--pt)}
+.pnote{background:var(--accent); border:1px solid var(--border); border-left:3px solid var(--border); border-radius:4px; padding:10px 14px; margin-bottom:8px; scroll-margin-top:70px}
+.pnote:target{outline:2px solid var(--link)}
+.pnote[class*="t-"]{border-left-color:var(--pt)}
+.pn-h{display:flex; flex-wrap:wrap; gap:8px; align-items:baseline}
+.pn-h b{font:600 15px var(--head)}
+.ptype{font:600 10.5px var(--mono); text-transform:uppercase; letter-spacing:.06em; padding:1px 6px; border-radius:2px; color:#000; background:var(--pt)}
+.pnote p{margin:6px 0 0; overflow-wrap:anywhere}
+.pnote blockquote{margin:8px 0 0; padding:2px 0 2px 12px; border-left:2px solid var(--faint); color:var(--muted); font-style:italic}
+.pn-fix{font-size:13.5px; color:var(--muted)}
+.pn-fix b{color:var(--alert)}
+.fnn{font:600 11px var(--mono); color:var(--link)}
+sup.fn{font:600 10px var(--mono); margin-left:2px}
+sup.fn a{padding:0 3px; border-radius:2px; background:var(--page2)}
+.podlist{display:grid; gap:10px}
+.pod{display:grid; grid-template-columns:168px 1fr; gap:14px; background:var(--accent); border:1px solid var(--border); border-radius:4px; padding:10px; color:var(--text)}
+.pod img{width:168px; aspect-ratio:16/9; object-fit:cover; border-radius:3px}
+.pod b{font:600 16px var(--head)}
+.pod .types{display:flex; flex-wrap:wrap; gap:4px; margin-top:6px}
+.pod .types span{font:600 10.5px var(--mono); padding:1px 6px; border-radius:2px; border:1px solid var(--pt); color:var(--pt)}
+.tscript{font-size:14px; line-height:1.6}
+.tscript h3{font:600 14px var(--head); color:var(--link); margin:18px 0 6px}
+.tscript p{margin:0 0 6px}
+.tscript a.tc{font:500 12px var(--mono); margin-right:6px}
+@media (max-width:600px){ .pod{grid-template-columns:1fr} .pod img{width:100%} }
