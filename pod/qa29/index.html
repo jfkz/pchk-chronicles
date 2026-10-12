@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #29</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/ISgEZBjxvG4" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/ISgEZBjxvG4/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/ISgEZBjxvG4" title="Ответы на вопросы по ПЧК 29 (Гудков, BRB, Шакулин, SQWOZBAB) / Подкаст #13" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">18.09.2024 · 96 мин · подкаст #13</span>
     <h1>Подкаст по #29</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 29 (Гудков, BRB, Шакулин, SQWOZBAB) / Подкаст #13</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/29/" title="Отель &quot;Глубокий канал&quot;">#29 Отель &quot;Глубокий канал&quot;</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Василий Шакулин, Григорий Шатохин, Big Russian Boss, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Василий Шакулин, Григорий Шатохин, Big Russian Boss, Александр Бреганов, Екатерина Варнава, Марат SQWOZBAB</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/shakulin/">Шакулин</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/ekaterina-varnava/">Екатерина Варнава</a>, <a href="/p/sqwozbab/">SQWOZBAB</a></p>
     <p class="lead">Подкаст по выпуску 29 «Отель „Глубокий канал“» с Василием <a class="ref" href="/p/shakulin/">Шакулиным</a>, Маратом (<a class="ref" href="/p/sqwozbab/">SQWOZBAB</a>) и зрителем-косплеером Игорем Кнышем. Авторы объяснили механику «психического урона» <a class="ref" href="/c/bucefalos/">Буцефалоса</a> и устройство реинкарнаций Лёши: кентавр — одна из прошлых жизней его души, всего их не больше двенадцати. Зачитали вырезанную историю душесоса «<a class="ref" href="/a/dushesos-daysol/">Дайсол</a>» (изобрели гномы города <a class="ref" href="/place/zmiy-hrustalnyy/">Змий Хрустальный</a>) и полный состав преступной верхушки на собрании <a class="ref" href="/c/yanus/">Януса</a>. Рассказали о несыгранной катсцене, где Янус высасывает душу из стукача <a class="ref" href="/c/neyt/">Нейта</a>, и о том, почему душу кентавра переселили именно в <a class="ref" href="/c/biktor/">Биктора</a>.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/ISgEZBjxvG4" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa29/">Скопировать ссылку</button><a class="btn" href="/pod/qa28/">← Подкаст по #28</a><a class="btn" href="/pod/qa30/">Подкаст по #30 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/ISgEZBjxvG4"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/ISgEZBjxvG4?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

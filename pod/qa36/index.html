@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #36</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/oEqxCRDdITw" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/oEqxCRDdITw/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/oEqxCRDdITw" title="Ответы на вопросы по ПЧК 36 (Гудков, Шатохин, Селезнев) / Подкаст #19 (Запись стрима)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">09.04.2025 · 89 мин · подкаст #19</span>
     <h1>Подкаст по #36</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 36 (Гудков, Шатохин, Селезнев) / Подкаст #19 (Запись стрима)</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/36/" title="Руины Малестии">#36 Руины Малестии</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Вадим Селезнёв, Александр Гудков, Григорий Шатохин</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a></p>
     <p class="lead">Запись стрима по выпуску #36 «<a class="ref" href="/place/malestiya/">Руины Малестии</a>» с <a class="ref" href="/p/aleksandr-gudkov/">Гудковым</a>, Шатохиным и Селезнёвым, без мастера. Авторы объяснили мотивацию крысы <a class="ref" href="/c/krysa-larisa/">Ларисы</a> и механику её бессмертия: она стала плутом-колдуном с лордом-мумией <a class="ref" href="/c/imperator-elon/">Элоном</a> в покровителях. Корона Элона не даёт бессмертия — ритуальным артефактом был кинжал в груди его жены. Авторы рассказали о несыгранных концовках и трёх желаниях Элона, о двух оставшихся свитках Апокалипсиса и о том, что <a class="ref" href="/c/panasiy/">Панасий</a> с перстнем — пародия на Евгения Понасенкова.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/oEqxCRDdITw" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa36/">Скопировать ссылку</button><a class="btn" href="/pod/qa35/">← Подкаст по #35</a><a class="btn" href="/pod/qa38/">Подкаст по #38 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/oEqxCRDdITw"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/oEqxCRDdITw?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

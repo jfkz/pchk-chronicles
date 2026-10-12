@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #35</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/U6j9pGd-3ao" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/U6j9pGd-3ao/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/U6j9pGd-3ao" title="Ответы на вопросы по ПЧК 35 (Гоген Солнцев, Гудков, БРБ, Макс +100500) / Подкаст #18" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">06.03.2025 · 145 мин · подкаст #18</span>
     <h1>Подкаст по #35</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 35 (Гоген Солнцев, Гудков, БРБ, Макс +100500) / Подкаст #18</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/35/" title="Второй Шанс">#35 Второй Шанс</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Гоген Солнцев, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Гоген Солнцев, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов, Big Russian Boss, Макс +100500</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/gogen-solncev/">Гоген Солнцев</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/maks-100500/">Макс +100500</a></p>
     <p class="lead">Подкаст по #35 «Второй шанс» с <a class="ref" href="/p/gogen-solncev/">Гогеном Солнцевым</a>, <a class="ref" href="/p/aleksandr-gudkov/">Гудковым</a>, <a class="ref" href="/p/brb/">BRB</a>, Брегановым и авторами; <a class="ref" href="/p/maks-100500/">Макс +100500</a> участвовал удалённо. Главные темы — скрытая мотивация беса Миши и спор о ретроспективной заявке: Гудкову заранее поручили решить судьбу <a class="ref" href="/c/erik-penisov/">Эрика Пэнисова</a>, вызов к <a class="ref" href="/c/dzhuna/">Джуне</a> свели к одной проверке Интеллекта, а мастер объяснил границы таких заявок. Мастер зачитал ненайденный дневник жрицы Ипполиты с божественным видением амазонок. Авторы признались, что вырезали из финала уход души Эрика в ад, рассказали, что <a class="ref" href="/c/bes-misha/">Миша</a> служит Асмодею — начальнику Тёмного Властелина, и назвали текущий год мира: 1025-й.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/U6j9pGd-3ao" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa35/">Скопировать ссылку</button><a class="btn" href="/pod/qa33/">← Подкаст по #33</a><a class="btn" href="/pod/qa36/">Подкаст по #36 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/U6j9pGd-3ao"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/U6j9pGd-3ao?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

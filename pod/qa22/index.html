@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #22</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/IaSsYIq1eWA" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/IaSsYIq1eWA/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/IaSsYIq1eWA" title="Ответы на вопросы по ПЧК 22 (Варнава, Гудков, BRB, Паль) / Подкаст &quot;Подземелья Чикен Карри&quot; #7" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">24.12.2023 · 118 мин · подкаст #7</span>
     <h1>Подкаст по #22</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 22 (Варнава, Гудков, BRB, Паль) / Подкаст &quot;Подземелья Чикен Карри&quot; #7</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/22/" title="Отряд Солнца">#22 Отряд Солнца</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Екатерина Варнава, Big Russian Boss, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/ekaterina-varnava/">Екатерина Варнава</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/aleksandr-pal/">Александр Паль</a></p>
     <p class="lead">Новогодний подкаст по выпуску 22 «Отряд Солнца»: первая половина — с <a class="ref" href="/p/ekaterina-varnava/">Екатериной Варнавой</a>, вторая — с <a class="ref" href="/p/brb/">BRB</a>. Авторы объяснили финальный бросок Лёши (сложность 10, при провале всё увиденное стало бы реальностью и почти все герои погибли бы), раскрыли, что у Лёши было две скрытые способности, и разобрали несыгранные варианты: бой с наёмниками Януса на рынке, убийство <a class="ref" href="/c/yanus/">Дододиса</a> у входа, захват маски. Дододис проклял сестру не по своей воле, а под властью маски Януса; ожог <a class="ref" href="/c/paladin-krihta/">Кряхтуна</a> убрали намеренно; гадалка ничего не предсказывала. Также прозвучало, почему <a class="ref" href="/c/zhanna/">Жанна</a>, <a class="ref" href="/c/din-din/">Динь-Динь</a> и <a class="ref" href="/c/volodimir/">Володимир</a> не могут вернуться из ада, в отличие от Али.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/IaSsYIq1eWA" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa22/">Скопировать ссылку</button><a class="btn" href="/pod/qa21/">← Подкаст по #21</a><a class="btn" href="/pod/qa24/">Подкаст по #24 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/IaSsYIq1eWA"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/IaSsYIq1eWA?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

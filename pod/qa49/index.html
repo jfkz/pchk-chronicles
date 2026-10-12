@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #49</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/bwomt79OKM4" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/bwomt79OKM4/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/bwomt79OKM4" title="Ответы на вопросы по ПЧК 49 (БРБ, Frame Tamer, Турал, Шатохин, Селезнёв, Бреганов / Подкаст #28" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">24.06.2026 · 128 мин · подкаст #28</span>
     <h1>Подкаст по #49</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 49 (БРБ, Frame Tamer, Турал, Шатохин, Селезнёв, Бреганов / Подкаст #28</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/49/" title="Раненый дракон">#49 Раненый дракон</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Frame Tamer, Григорий Шатохин, Big Russian Boss, Турал Натурал, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Frame Tamer, Григорий Шатохин, Big Russian Boss, Турал Натурал, Вадим Селезнёв, Александр Бреганов, Александр Гудков, Никита Шевчук</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/frame-tamer/">Frame Tamer</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/tural-natural/">Турал Натурал</a>, <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/nikita-shevchuk/">Никита Шевчук</a></p>
     <p class="lead">Подкаст по вып. 49 «Раненый дракон» с <a class="ref" href="/p/brb/">BRB</a>, <a class="ref" href="/p/frame-tamer/">Frame Tamer</a>, Туралом и авторами, без <a class="ref" href="/p/aleksandr-gudkov/">Гудкова</a>. Мастер объяснил, что выпуск выводит <a class="ref" href="/c/drakon-gimelut/">Гиммилута</a> из логова в большую политику. Женевьева хотела убить Дракостю во время «операции» ради маски <a class="ref" href="/c/yanus/">Януса</a>: стать новым хозяином маски можно, только убив прежнего. Главные откровения: устройство <a class="ref" href="/place/poniya/">Понии</a> и мотив <a class="ref" href="/c/korol-nurik/">Нурика</a> (его королевство покорил Поний IV), подлинное здоровье Дракости в вып. 39, механика монет дракона, рецепты <a class="ref" href="/c/shmygel/">Шмыгеля</a> и монтажный ляп с удочкой <a class="ref" href="/c/miratorg/">Мираторга</a>.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/bwomt79OKM4" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa49/">Скопировать ссылку</button><a class="btn" href="/pod/qa48/">← Подкаст по #48</a><a class="btn" href="/pod/qa50/">Подкаст по #50 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/bwomt79OKM4"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/bwomt79OKM4?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

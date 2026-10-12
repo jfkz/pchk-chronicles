@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #30</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/7eb7Yt-FDNk" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/7eb7Yt-FDNk/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/7eb7Yt-FDNk" title="Ответы на вопросы по ПЧК 30 (Гудков, BRB, Куруч, Саша Малой) / Подкаст #14" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">18.10.2024 · 140 мин · подкаст #14</span>
     <h1>Подкаст по #30</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 30 (Гудков, BRB, Куруч, Саша Малой) / Подкаст #14</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/30/" title="Ультиматум Сфинктериона">#30 Ультиматум Сфинктериона</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Малой, Александр Гудков, Илья Куруч, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Малой, Александр Гудков, Илья Куруч, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss, Филипп Воронин, Сергей Орлов, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/sasha-maloy/">Саша Малой</a>, <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/ilya-kuruch/">Илья Куруч</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/filipp-voronin/">Филипп Воронин</a>, <a href="/p/sergey-orlov/">Сергей Орлов</a></p>
     <p class="lead">Подкаст по выпуску 30 «Ультиматум <a class="ref" href="/c/sfinkterion/">Сфинктериона</a>» с Александром Малым и Ильёй <a class="ref" href="/p/ilya-kuruch/">Куручем</a>; <a class="ref" href="/p/sergey-orlov/">Сергей Орлов</a> и Бреганов отвечают в записанных видео. Обсуждали финал, где <a class="ref" href="/c/kudrigar/">Кудрегар</a> бьёт ребёнка. Авторы прямо сказали, что <a class="ref" href="/c/lyuciy-palin/">Люций Пален</a> погиб, его нельзя спасти, и «ветвь рода Пэнисовых отрублена»: Тёмному Властелину (<a class="ref" href="/c/brendon-tyomnyy-vlastelin/">Брэндону</a>) для вселения осталось тело <a class="ref" href="/c/erik-penisov/">Эрика</a> или Лёши Пэнисова. Рассказали, что вырезали на монтаже (15-минутный ход команды <a class="ref" href="/c/krysa-larisa/">Ларисы</a>), что сыграло на тесте (ребёнка отдали Сфинктериону), что дали бы медведь и баня, и что было бы, отдай герои ребёнка: он бы выжил, а Бреганов хотел войны на небесах с распятием <a class="ref" href="/c/gelius/">Гелиоса</a>.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/7eb7Yt-FDNk" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa30/">Скопировать ссылку</button><a class="btn" href="/pod/qa29/">← Подкаст по #29</a><a class="btn" href="/pod/qa31/">Подкаст по #31 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/7eb7Yt-FDNk"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/7eb7Yt-FDNk?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

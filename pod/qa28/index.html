@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #28</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/drZSni0fegc" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/drZSni0fegc/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/drZSni0fegc" title="Ответы на вопросы по ПЧК 28 (Гудков, BRB, Шастун, Позов, Попов) / Подкаст #12" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">27.07.2024 · 125 мин · подкаст #12</span>
     <h1>Подкаст по #28</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 28 (Гудков, BRB, Шастун, Позов, Попов) / Подкаст #12</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/28a/" title="Часть 1 Чёрное небо вампиров">#28a Часть 1 Чёрное небо вампиров</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss, Дмитрий Позов, Арсений Попов, Антон Шастун, Катя Гандрабура</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/dmitriy-pozov/">Дмитрий Позов</a>, <a href="/p/arseniy-popov/">Арсений Попов</a>, <a href="/p/anton-shastun/">Антон Шастун</a></p>
     <p class="lead">Подкаст к выпуску 28 «Чёрное небо вампиров» (части 28a и 28b) с <a class="ref" href="/p/aleksandr-gudkov/">Гудковым</a>, <a class="ref" href="/p/brb/">BRB</a>, авторами, видеоответами <a class="ref" href="/p/anton-shastun/">Шастуна</a>, <a class="ref" href="/p/arseniy-popov/">Попова</a> и <a class="ref" href="/p/dmitriy-pozov/">Позова</a>, художницей Катей Гандрабурой и вставкой Бреганова о дьяблери. Авторы рассказали, что воскрешение <a class="ref" href="/c/vampir-bek/">Вампирбека</a> не было запланировано: BRB приехал «запасным сюрпризом», а если бы игроки не решили головоломку за минуту, автоматон взорвался бы и, скорее всего, убил весь клан. Ещё они раскрыли план Пиф-Пафа (бойня в банях руками мигрантов и боевого автоматона, а сам он добивает выживших с крыши), объяснили, почему Адриан Вурдаласку заказал <a class="ref" href="/c/gryaznis-domogaytis/">Грязниса Домогайтиса</a>, и описали механику кованого рыцаря. Двойное отцовство <a class="ref" href="/c/luka-superbigdikgan/">СуперБигДикГана</a> было задумано с самого начала. <a class="ref" href="/c/chek/">Чек-Ин</a> Гномбанка на 100 золотых хотят обналичить в будущем выпуске как 1 млн рублей на благотворительность.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/drZSni0fegc" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa28/">Скопировать ссылку</button><a class="btn" href="/pod/qa27/">← Подкаст по #27</a><a class="btn" href="/pod/qa29/">Подкаст по #29 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/drZSni0fegc"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/drZSni0fegc?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #27</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/ZdYnf3jKbeo" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/ZdYnf3jKbeo/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/ZdYnf3jKbeo" title="Ответы на вопросы по ПЧК 27 (Гудков, BRB, Дэни) / Подкаст #11" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">12.06.2024 · 118 мин · подкаст #11</span>
     <h1>Подкаст по #27</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 27 (Гудков, BRB, Дэни) / Подкаст #11</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/27/" title="Достучаться до небес">#27 Достучаться до небес</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Дэниел Барнс, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss, Александр Бреганов, Владимир Маркони</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/deni-barns/">Дэни Барнс</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/vladimir-markoni/">Владимир Маркони</a></p>
     <p class="lead">Подкаст к выпуску 27 «Достучаться до небес» с <a class="ref" href="/p/aleksandr-gudkov/">Гудковым</a>, <a class="ref" href="/p/brb/">BRB</a>, <a class="ref" href="/p/deni-barns/">Дэни Барнсом</a> и <a class="ref" href="/p/vladimir-markoni/">Маркони</a>; мастера Бреганова за столом не было. Авторы рассказали, что <a class="ref" href="/c/medium-pahom/">Пахом</a> мог выжить: валькирия у турникета, будь она ему другом, отрубила бы руку с кристаллом и вылечила бы его. Ещё они пояснили устройство небесной «корпорации», зачитали тезисы доклада <a class="ref" href="/c/venera/">Венеры</a> о «концепции страданий» и сообщили, что все мойры живы. Главное откровение: ребёнок <a class="ref" href="/c/brendon-tyomnyy-vlastelin/">Брэндона</a> от полурослицы — это <a class="ref" href="/c/kandelakis-penisov/">Канделакис Пэнисов</a>, и божественная кровь есть у всего рода Пэнисовых. Кроме того, «главным адептом <a class="ref" href="/c/gelius/">Гелиоса</a>, присягнувшим дьяволу», оказался лорд <a class="ref" href="/c/lord-vlaston/">Властон</a>, а не <a class="ref" href="/c/sfinkterion/">Сфинктерион</a>.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/ZdYnf3jKbeo" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa27/">Скопировать ссылку</button><a class="btn" href="/pod/qa26/">← Подкаст по #26</a><a class="btn" href="/pod/qa28/">Подкаст по #28 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/ZdYnf3jKbeo"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/ZdYnf3jKbeo?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

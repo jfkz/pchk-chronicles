@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #51 и #52</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/0XDSOSjs7f4" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/0XDSOSjs7f4/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/0XDSOSjs7f4" title="Ответы на вопросы по ПЧК 52 и 51 (Гудков, Гоген, БРБ, Шатохин, Селезнёв, Бреганов)  / Подкаст #30" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">24.09.2026 · 146 мин · подкаст #30</span>
     <h1>Подкаст по #51 и #52</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 52 и 51 (Гудков, Гоген, БРБ, Шатохин, Селезнёв, Бреганов)  / Подкаст #30</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/51/" title="Точка невозврата">#51 Точка невозврата</a> · <a href="/ep/52/" title="Накопитель Любви">#52 Накопитель Любви</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Гудков, Гоген, Big Russian Boss, Шатохин, Селезнёв, Бреганов</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/gogen-solncev/">Гоген Солнцев</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Двойной подкаст по выпускам 52 («<a class="ref" href="/a/nakopitel-lyubvi/">Накопитель Любви</a>») и 51 («Точка невозврата»), гость — <a class="ref" href="/p/gogen-solncev/">Гоген Солнцев</a>. Авторы рассказали, как работают ангельский паспорт и аура гомункула, маховик времени и зеркало Асмодея, и показали, сколько заготовок герои 52-го пропустили: бой с автоматонами, гигантского робота «Небесный страж», пузырь тишины, реинкарнационную беседку <a class="ref" href="/c/venera/">Венеры</a>. Главные откровения: любовь <a class="ref" href="/c/brendon-tyomnyy-vlastelin/">Брэндона</a> и <a class="ref" href="/c/melissa/">Мелиссы</a> была настоящей, но её вызвала золотая стрела купидона. Брэндон сам, по совету Асмодея, запер свои добрые чувства в зеркале. Зеркало разбил крит сатира, а не уговоры <a class="ref" href="/c/gelius/">Гелиоса</a> внутри. Солнечный луч <a class="ref" href="/c/gnomka-talala/">Талалы</a> на Киселе был нарушением правил.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/0XDSOSjs7f4" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa51-52/">Скопировать ссылку</button><a class="btn" href="/pod/qa50/">← Подкаст по #50</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/0XDSOSjs7f4"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/0XDSOSjs7f4?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

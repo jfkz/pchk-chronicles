@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #43 и #44</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/trPN7O0uNR0" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/trPN7O0uNR0/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/trPN7O0uNR0" title="Ответы на вопросы по ПЧК 43 и 44 (БРБ, Усачев, Куруч, Бреганов, Шатохин, Селезнёв)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">26.12.2025 · 142 мин</span>
     <h1>Подкаст по #43 и #44</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 43 и 44 (БРБ, Усачев, Куруч, Бреганов, Шатохин, Селезнёв)</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/43/" title="Груз Кристиночки">#43 Груз Кристиночки</a> · <a href="/ep/44/" title="Королевская охота">#44 Королевская охота</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Big Russian Boss, Григорий Шатохин, Руслан Усачев, Илья Куруч, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/ruslan-usachev/">Руслан Усачев</a>, <a href="/p/ilya-kuruch/">Илья Куруч</a></p>
     <p class="lead">Сдвоенный подкаст по выпускам 43 «Груз <a class="ref" href="/c/kristina/">Кристиночки</a>» (с <a class="ref" href="/p/ruslan-usachev/">Русланом Усачевым</a>) и 44 «Королевская охота» (с Ильёй <a class="ref" href="/p/ilya-kuruch/">Куручем</a>, письменные ответы Фила <a class="ref" href="/p/filipp-voronin/">Воронина</a>, Германа и <a class="ref" href="/p/aleksandr-gudkov/">Гудкова</a>). Авторы раскрыли вырезанную лесную локацию с разбойником Робином Гульфом, замысел демоницы Сыроеги (заражённые куклы как диверсия в тылу) и механику двух видов её спор. По 44-му — несыгранный босс-файт и заготовленное покушение на короля, лор «кошек с верёвками», то, что отец <a class="ref" href="/c/diffuzoriy/">Диффузория</a> — землекоп из выпуска 8, и что мумия императора <a class="ref" href="/place/malestiya/">Малестии</a> — лич, а <a class="ref" href="/c/krysa-larisa/">Лариса</a> стала её колдуном.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/trPN7O0uNR0" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa43-44/">Скопировать ссылку</button><a class="btn" href="/pod/qa41-42/">← Подкаст по #41 и #42</a><a class="btn" href="/pod/qa46/">Подкаст по #46 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/trPN7O0uNR0"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/trPN7O0uNR0?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

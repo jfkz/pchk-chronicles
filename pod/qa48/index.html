@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #48</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/9Z9IioxZGkk" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/9Z9IioxZGkk/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/9Z9IioxZGkk" title="Ответы на вопросы по ПЧК 48 (Гудков, БРБ, Чебатков, Курбанова, Свирский) / Подкаст #27" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">21.05.2026 · 122 мин · подкаст #27</span>
     <h1>Подкаст по #48</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 48 (Гудков, БРБ, Чебатков, Курбанова, Свирский) / Подкаст #27</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/48/" title="Ночь в музее">#48 Ночь в музее</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Big Russian Boss, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Big Russian Boss, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов, Динара Крубанова, Евгений Чебатков, Егор Свирский</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/evgeniy-chebatkov/">Евгений Чебатков</a>, <a href="/p/egor-svirskiy/">Егор Свирский</a>, <a href="/p/dinara-kurbanova/">Динара Курбанова</a></p>
     <p class="lead">Подкаст по выпуску 48 «Ночь в музее», записанный на даче; <a class="ref" href="/p/dinara-kurbanova/">Динара Курбанова</a>, <a class="ref" href="/p/egor-svirskiy/">Егор Свирский</a> и <a class="ref" href="/p/evgeniy-chebatkov/">Евгений Чебатков</a> ответили видеосообщениями. Главная тема — почему <a class="ref" href="/c/dan-balan/">Дан Балан</a> никого не спас в финале. Авторы подробно раскрыли несыгранную часть: историю Ержана и Хадисы (<a class="ref" href="/c/krovozhadina/">Кровожадина</a> — потомок смертной семьи Хадисы, а не реинкарнация), ловушку с пробуждением Ержана, оборотней-информаторов инквизиции и альтернативные прохождения. Также объяснили происхождение королевской инквизиции и последствия гибели верховного жреца Рюха, а заодно признались, что концовку Бреганов вёл в спешке, потому что очень хотел в туалет.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/9Z9IioxZGkk" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa48/">Скопировать ссылку</button><a class="btn" href="/pod/qa47/">← Подкаст по #47</a><a class="btn" href="/pod/qa49/">Подкаст по #49 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/9Z9IioxZGkk"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/9Z9IioxZGkk?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

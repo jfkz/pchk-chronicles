@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #16</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/xh1YWZp0zQE" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/xh1YWZp0zQE/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/xh1YWZp0zQE" title="Ответы на вопросы по ПЧК 16 / Подкаст &quot;Подземелья Чикен Карри&quot; #1" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">28.03.2023 · 133 мин · подкаст #1</span>
     <h1>Подкаст по #16</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 16 / Подкаст &quot;Подземелья Чикен Карри&quot; #1</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/16/" title="Вампиры Мёртвых топей">#16 Вампиры Мёртвых топей</a></p>
     <p class="note" style="margin:6px 0 0">Участники: </p>
+    
     <p class="lead">Первый подкаст «Ответы на вопросы»: <a class="ref" href="/p/aleksandr-gudkov/">Гудков</a>, Бреганов, Селезнёв и Шатохин разбирают выпуск 16 «Вампиры Мёртвых топей». Объяснены вампирские правила мира: в общественные места можно входить без приглашения, человеческая еда и питьё недоступны, кровь пьётся минуту, а гробы нужны с родной землёй. Рассказано о ликантропии, энергетических вампирах и о том, что за убийство старшего вампира судит Совет. Мастер раскрыл план приключения (трактирщик должен был оказаться охотником), признался, что сожжение графа не планировали, а канистра — импровизация игрока. Ещё рассказали о тесте выпуска 15 и о Гнилой Гавани как пиратской республике.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/xh1YWZp0zQE" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa16/">Скопировать ссылку</button><a class="btn" href="/pod/qa17/">Подкаст по #17 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/xh1YWZp0zQE"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/xh1YWZp0zQE?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

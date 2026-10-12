@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #20</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/G4qb0pQjnR4" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/G4qb0pQjnR4/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/G4qb0pQjnR4" title="Ответы на вопросы по ПЧК 20 (Гудков, BRB) / Подкаст &quot;Подземелья Чикен Карри&quot; #5" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">15.09.2023 · 87 мин · подкаст #5</span>
     <h1>Подкаст по #20</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 20 (Гудков, BRB) / Подкаст &quot;Подземелья Чикен Карри&quot; #5</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/20/" title="Вампирское возмездие">#20 Вампирское возмездие</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Подкаст по 20-му выпуску «Вампирское возмездие» без мастера: отвечают <a class="ref" href="/p/aleksandr-gudkov/">Гудков</a>, <a class="ref" href="/p/brb/">BRB</a>, Шатохин и Селезнёв. Авторы раскрыли устройство высшего вампирского совета (изначально 13 членов, убиты <a class="ref" href="/c/graf-vlad-sosunesku/">Сосунеску</a> и <a class="ref" href="/c/dimitar-nord/">Димитар Норд</a>, жена и сыновья Норда в совет не входили), происхождение богатства Нордов и «Баловня», сделку, которую Димитар предлагал <a class="ref" href="/c/dan-balan/">Дан Балану</a>, и предысторию Бесагона: отчаявшегося фамильяра, получившего силу от <a class="ref" href="/c/lord-vlaston/">Властона</a>. Объяснили механику приглашения через челюсть, «мигрирующие» колёса рикши, метагейм-правило «слышит один — слышат все» и отказ от атак при отходе. Анонсировали 21-й выпуск в двух частях как подведение черты, возвращение Кукана Яки и игру <a class="ref" href="/p/nikita-kukushkin/">Кукушкина</a> по видеосвязи.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/G4qb0pQjnR4" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa20/">Скопировать ссылку</button><a class="btn" href="/pod/qa19/">← Подкаст по #19</a><a class="btn" href="/pod/qa21/">Подкаст по #21 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/G4qb0pQjnR4"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/G4qb0pQjnR4?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

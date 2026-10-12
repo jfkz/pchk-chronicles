@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #47</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/2JwxVTbvp8c" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/2JwxVTbvp8c/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/2JwxVTbvp8c" title="Ответы на вопросы по ПЧК 47 (Гудков, Никитин, Ли, Макаров, БРБ) / Подкаст #26" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">23.04.2026 · 119 мин · подкаст #26</span>
     <h1>Подкаст по #47</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 47 (Гудков, Никитин, Ли, Макаров, БРБ) / Подкаст #26</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/47/" title="Вокзал грешных душ">#47 Вокзал грешных душ</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Никита Никитин, Настя Ли, Григорий Шатохин, Александр Гудков, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">Участники: Никита Никитин, Настя Ли, Григорий Шатохин, Александр Гудков, Вадим Селезнёв, Александр Бреганов, Big Russian Boss, Илья Макаров</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/nikita-nikitin/">Никита Никитин</a>, <a href="/p/nastya-li/">Настя Ли</a>, <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/ilya-makarov/">Илья Макаров</a></p>
     <p class="lead">Подкаст по выпуску 47 «<a class="ref" href="/place/ad/">Вокзал грешных душ</a>» с гостями <a class="ref" href="/p/nikita-nikitin/">Никитой Никитиным</a> и <a class="ref" href="/p/nastya-li/">Настей Ли</a> (<a class="ref" href="/p/ilya-makarov/">Илья Макаров</a> и <a class="ref" href="/p/brb/">BRB</a> ответили видеосообщениями). Авторы рассказали о несыгранной ветке через камеру хранения с адским бабуином Бабби и её добычей, о вариантах финала, включая прорыв на локомотиве в <a class="ref" href="/place/chyornyy-gelenburg/">Чёрный Геленбург</a>, и о том, почему уничтожение одного локомотива переломило ход войны. Мастер объяснил лор ихора, зала вечного ожидания, единорогов и осквернённых ангелов-«реакторов». Выяснилось, что <a class="ref" href="/c/shafran-desperado/">Шафрана</a> спасение не планировали и из ада вывели только его душу: в каком качестве он теперь существует, авторы ещё не решили.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/2JwxVTbvp8c" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa47/">Скопировать ссылку</button><a class="btn" href="/pod/qa46/">← Подкаст по #46</a><a class="btn" href="/pod/qa48/">Подкаст по #48 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/2JwxVTbvp8c"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/2JwxVTbvp8c?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

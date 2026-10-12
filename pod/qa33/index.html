@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #33</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/bRRVr7jN2fA" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/bRRVr7jN2fA/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/bRRVr7jN2fA" title="Ответы на вопросы по ПЧК 33 (Гудков, БРБ, Котельникова, Мягкова) / Новогодний подкаст" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">27.12.2024 · 123 мин</span>
     <h1>Подкаст по #33</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 33 (Гудков, БРБ, Котельникова, Мягкова) / Новогодний подкаст</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/33/" title="Зверь Фест">#33 Зверь Фест</a></p>
-    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Big Russian Boss, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Big Russian Boss, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов, Вера Котельникова, Ира Мягкова</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/vera-kotelnikova/">Вера Котельникова</a>, <a href="/p/irina-myagkova/">Ирина Мягкова</a></p>
     <p class="lead">Новогодний подкаст по выпуску #33 «Зверь Фест» с итогами 2024 года. Авторы рассказали, как был устроен фестиваль (карта зон, несыгранные палатки, вырезанный мусорщик с четвёртым обрывком рецепта), признали две ошибки: <a class="ref" href="/c/vampir-bek/">Вампирбеку</a> без карты позволили призвать Дину <a class="ref" href="/p/nikita-nikitin/">Никитину</a>, а козочка-красный колпак не должна была умереть от укуса Дана Балана. Выяснилось, что красные колпаки — это демонические феи, а не гномы, и что у Вампирбека при здоровье ниже шести должно было сработать самоуничтожение. Ещё сказали, что за Каргой кто-то стоит, и упомянули несостоявшийся новогодний выпуск, где хотели обналичить чек Гномбанка.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/bRRVr7jN2fA" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa33/">Скопировать ссылку</button><a class="btn" href="/pod/qa32/">← Подкаст по #32</a><a class="btn" href="/pod/qa35/">Подкаст по #35 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/bRRVr7jN2fA"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/bRRVr7jN2fA?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

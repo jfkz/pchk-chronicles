@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #39</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/qxRg1urCUIw" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/qxRg1urCUIw/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/qxRg1urCUIw" title="Ответы на вопросы по ПЧК 39 (Кашоков, Турал Натурал, Гудков, Макар, БРБ) / Подкаст #21" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">18.07.2025 · 109 мин · подкаст #21</span>
     <h1>Подкаст по #39</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 39 (Кашоков, Турал Натурал, Гудков, Макар, БРБ) / Подкаст #21</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/39/" title="Кунисская пленница">#39 Кунисская пленница</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Турал Натурал, Эмир Кашоков, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/tural-natural/">Турал Натурал</a>, <a href="/p/emir-kashokov/">Эмир Кашоков</a>, <a href="/p/ilya-makarov/">Илья Макаров</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Подкаст по выпуску №39 «Кунисская пленница». Главное откровение: на съёмках <a class="ref" href="/c/dudush/">Дудуш</a> после спасения дракона всё-таки добил <a class="ref" href="/c/drakon-gimelut/">Гиммилута</a> в полёте и шёпот маски <a class="ref" href="/c/yanus/">Януса</a> позвал его, но эту концовку вырезали, потому что к убийству Турала подтолкнул мастер. Авторы рассказали о скрытой мотивации <a class="ref" href="/c/shafran-desperado/">Шафрана</a> (засада речных гномов и захват пушки из башни), о несыгранных локациях Коразоновки, о цели Гиммилута (через невест узаконить власть над землями) и о том, что к «выходу в свет» его подтолкнула маска Януса. Также объяснили происхождение малой драконобойки и механику боя с драконом.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/qxRg1urCUIw" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa39/">Скопировать ссылку</button><a class="btn" href="/pod/qa38/">← Подкаст по #38</a><a class="btn" href="/pod/qa40/">Подкаст по #40 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/qxRg1urCUIw"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/qxRg1urCUIw?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

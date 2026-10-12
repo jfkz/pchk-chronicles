@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Никита Кукушкин отвечает на вопросы</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/sRvWxLpc8RE" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/sRvWxLpc8RE/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/sRvWxLpc8RE" title="Никита Кукушкин / Ответы на вопросы подписчиков / Подземелья Чикен Карри" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">21.06.2023 · 40 мин</span>
     <h1>Никита Кукушкин отвечает на вопросы</h1>
     <p class="note" style="margin:6px 0 0">Никита Кукушкин / Ответы на вопросы подписчиков / Подземелья Чикен Карри</p>
     
     <p class="note" style="margin:6px 0 0">Участники: </p>
+    
     <p class="lead">Шуточное интервью с <a class="ref" href="/p/nikita-kukushkin/">Никитой Кукушкиным</a> в ванне: он отвечает на вопросы зрителей о своих персонажах и об игре за столом. По существу о мире сказано немного. Кукушкин считает, что графа <a class="ref" href="/c/graf-vlad-sosunesku/">Влада Сосунеску</a> можно было спасти, и надеется на его воскрешение; не верит в гибель <a class="ref" href="/c/erik-penisov/">Эрика Пэнисова</a>; объясняет, почему граф напал на Кукан Яку, и говорит, что бес <a class="ref" href="/c/bes-kapuchino/">Капучин</a> ради контракта готов почти на всё. Ещё он намекает, что Шатохин и Селезнёв уже придумали, как вернуть его в шоу.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/sRvWxLpc8RE" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa-sRvWxLpc8RE/">Скопировать ссылку</button><a class="btn" href="/pod/qa17/">← Подкаст по #17</a><a class="btn" href="/pod/qa18/">Подкаст по #18 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/sRvWxLpc8RE"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/sRvWxLpc8RE?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

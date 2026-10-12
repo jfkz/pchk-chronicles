@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #21</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/75PDShLb2xc" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/75PDShLb2xc/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/75PDShLb2xc" title="Ответы на вопросы по ПЧК 21 (Гудков, BRB, Чебатков, PIMP) / Подкаст &quot;Подземелья Чикен Карри&quot; #6" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">10.11.2023 · 106 мин · подкаст #6</span>
     <h1>Подкаст по #21</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 21 (Гудков, BRB, Чебатков, PIMP) / Подкаст &quot;Подземелья Чикен Карри&quot; #6</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/21b/" title="Часть 2 Судьба Властона">#21b Часть 2 Судьба Властона</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a>, <a href="/p/evgeniy-chebatkov/">Евгений Чебатков</a>, <a href="/p/pimp/">Pimp (Young P&amp;H)</a></p>
     <p class="lead">Подкаст по обеим частям выпуска 21 «Судьба <a class="ref" href="/c/lord-vlaston/">Властона</a>». За столом <a class="ref" href="/p/aleksandr-gudkov/">Гудков</a>, <a class="ref" href="/p/brb/">BRB</a>, Шатохин и Селезнёв, по телефону дозвонились <a class="ref" href="/p/nikita-kukushkin/">Кукушкину</a> и Бреганову, <a class="ref" href="/p/evgeniy-chebatkov/">Чебатков</a> и Пимп ответили записями. Авторы раскрыли условия адского контракта Властона и альтернативную концовку с походом к вулкану <a class="ref" href="/place/nergal/">Нергал</a>. Рассказали, как шкатулка попала в кислотный куб, кто такая <a class="ref" href="/c/irina-tvyordaya/">Ирэна Твёрдая</a> и что говорящий ворон был бесом-перевёртышем. Ещё анонсировали, что через год после падения <a class="ref" href="/place/gelenburg/">Геленбург</a> поднимется из руин как <a class="ref" href="/place/chyornyy-gelenburg/">Чёрный Геленбург</a>, форпост ада на земле.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/75PDShLb2xc" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa21/">Скопировать ссылку</button><a class="btn" href="/pod/qa20/">← Подкаст по #20</a><a class="btn" href="/pod/qa22/">Подкаст по #22 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/75PDShLb2xc"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/75PDShLb2xc?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

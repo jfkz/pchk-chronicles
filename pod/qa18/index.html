@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #18</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/-VEe7wxuhJ4" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/-VEe7wxuhJ4/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/-VEe7wxuhJ4" title="Ответы на вопросы по ПЧК 18 / Подкаст &quot;Подземелья Чикен Карри&quot; #3 (SQWOZBAB, Big Russian Boss)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">24.06.2023 · 94 мин · подкаст #3</span>
     <h1>Подкаст по #18</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 18 / Подкаст &quot;Подземелья Чикен Карри&quot; #3 (SQWOZBAB, Big Russian Boss)</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/18/" title="Охота на младенца">#18 Охота на младенца</a></p>
     <p class="note" style="margin:6px 0 0">Участники: SQWOZBAB, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/sqwozbab/">SQWOZBAB</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Подкаст по 18-му выпуску «Охота на младенца» с неожиданным гостем <a class="ref" href="/p/sqwozbab/">SQWOZBAB</a>. Авторы рассказали легенду храма Солнца и его связи с <a class="ref" href="/place/gelenburg/">Геленбургом</a>, объяснили, откуда у <a class="ref" href="/c/yulian/">Юлиана</a> «фамилия Пэнисов» и что у каннибалов фамилия Лектор, разобрали лифт с «перегрузом вины» как задуманную головоломку и бегство демонов после смерти Манучара. Много рассказали о несыгранном контенте: <a class="ref" href="/c/stanislava/">Севстания</a> во дворце <a class="ref" href="/c/lord-vlaston/">Властона</a> (вып. 4), каюта капитана с рысью на «Чёрном змее» (вып. 9), чёрный ход МФЦ; признали «авторским косяком» замену Динь-Диня гномкой <a class="ref" href="/c/gnomka-talala/">Талалой</a> и заявили, что гомосексуальность <a class="ref" href="/c/erik-penisov/">Эрика Пэнисова</a> — не канон.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/-VEe7wxuhJ4" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa18/">Скопировать ссылку</button><a class="btn" href="/pod/qa-sRvWxLpc8RE/">← Никита Кукушкин отвечает на вопросы</a><a class="btn" href="/pod/qa19/">Подкаст по #19 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/-VEe7wxuhJ4"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/-VEe7wxuhJ4?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

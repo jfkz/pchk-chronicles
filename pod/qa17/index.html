@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #17</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/VSlj32pAvNU" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/VSlj32pAvNU/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/VSlj32pAvNU" title="Ответы на вопросы по ПЧК 17 / Подкаст &quot;Подземелья Чикен Карри&quot; #2" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">27.04.2023 · 123 мин · подкаст #2</span>
     <h1>Подкаст по #17</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 17 / Подкаст &quot;Подземелья Чикен Карри&quot; #2</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/17/" title="Демонизация">#17 Демонизация</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Григорий Шатохин, Вадим Селезнёв, Александр Бреганов, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Второй подкаст: <a class="ref" href="/p/aleksandr-gudkov/">Гудков</a>, <a class="ref" href="/p/brb/">BRB</a>, Бреганов, Шатохин и Селезнёв разбирают выпуск 17 «Демонизация». Много говорят о тяжёлой съёмке: выпуски 16 и 17 снимали в один день с четырёхчасовой задержкой из-за звука, «Демонизацию» сняли первой и потом поменяли местами при выпуске. Подробно объяснили механику урона от кристалла <a class="ref" href="/c/medium-pahom/">Пахома</a> и происхождение кристаллов телепортации (шахты у <a class="ref" href="/place/fogelnest/">Фогельнеста</a>). <a class="ref" href="/c/yudzhin/">Юджин</a> не устойчив к огню, потому что он не демон, а переделанный человек. Мастер признал ошибку в бою с Юджином. Ещё выяснилось, что Кешу-панцирника в выпуске 5 играл опоздавший <a class="ref" href="/p/nikita-kukushkin/">Кукушкин</a>, и прозвучали планы на женский пол <a class="ref" href="/c/cisgender/">Цисгендия</a> и бои полуросликов.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/VSlj32pAvNU" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa17/">Скопировать ссылку</button><a class="btn" href="/pod/qa16/">← Подкаст по #16</a><a class="btn" href="/pod/qa-sRvWxLpc8RE/">Никита Кукушкин отвечает на вопросы →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/VSlj32pAvNU"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/VSlj32pAvNU?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

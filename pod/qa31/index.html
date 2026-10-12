@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #31</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/gPaDLkZfWao" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/gPaDLkZfWao/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/gPaDLkZfWao" title="Ответы на вопросы по ПЧК 31 / Запись стрима из телеграма / Подкаст авторов" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">08.11.2024 · 93 мин</span>
     <h1>Подкаст по #31</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 31 / Запись стрима из телеграма / Подкаст авторов</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/31/" title="Культ Кракена">#31 Культ Кракена</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Вадим Селезнёв, Григорий Шатохин</p>
+    
     <p class="lead">Запись первого стрима в телеграме: авторы Вадим Селезнёв и Григорий Шатохин вдвоём отвечают на вопросы по #31 «Культ Кракена». Объяснили, почему небожители из #27 не вышли из портала (у них не было разрешения небесной канцелярии), как устроены переходы между адом, землёй и небом и зачем демонам понадобился портал, что меч «<a class="ref" href="/a/kara-geliosa/">Кара Гелиоса</a>» настраивался подвигами, а не броском, и почему так коротко показан кракен Ильи <a class="ref" href="/p/ilya-sobolev/">Соболева</a>. Душа Динь-Диня ушла на небеса; про судьбу ангельского паспорта <a class="ref" href="/c/angelin/">Ангелина</a> авторы разошлись во мнениях.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/gPaDLkZfWao" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa31/">Скопировать ссылку</button><a class="btn" href="/pod/qa30/">← Подкаст по #30</a><a class="btn" href="/pod/qa32/">Подкаст по #32 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/gPaDLkZfWao"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/gPaDLkZfWao?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>

@@ -36,13 +36,15 @@
 
 <div class="crumbs"><a href="/">Хроники Понии</a> › <a href="/pod/">Подкасты</a> › Подкаст по #40</div>
 <header class="ep-hero">
-  <a href="https://youtu.be/xeMzbeaWtQg" target="_blank" rel="noopener"><img class="thumb" src="https://i.ytimg.com/vi/xeMzbeaWtQg/hqdefault.jpg" alt="Обложка подкаста"></a>
+  <div class="podvideo"><iframe src="https://www.youtube-nocookie.com/embed/xeMzbeaWtQg" title="Ответы на вопросы по ПЧК 40 (Гудков, БРБ, Саша Малой) / Подкаст #22" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   <div>
     <span class="eyebrow">10.08.2025 · 73 мин · подкаст #22</span>
     <h1>Подкаст по #40</h1>
     <p class="note" style="margin:6px 0 0">Ответы на вопросы по ПЧК 40 (Гудков, БРБ, Саша Малой) / Подкаст #22</p>
     <p class="note" style="margin:6px 0 0">Выпуски: <a href="/ep/40/" title="Паспорт хорошей твари">#40 Паспорт хорошей твари</a></p>
     <p class="note" style="margin:6px 0 0">Участники: Александр Гудков, Саша Малой, Александр Бреганов, Григорий Шатохин, Вадим Селезнёв, Big Russian Boss</p>
+    <p class="note" style="margin:6px 0 0">На сайте: <a href="/p/aleksandr-gudkov/">Александр Гудков</a>, <a href="/p/sasha-maloy/">Саша Малой</a>, <a href="/p/brb/">BRB (Big Russian Boss)</a></p>
     <p class="lead">Выездной подкаст на даче у Саши <a class="ref" href="/p/sasha-maloy/">Малого</a> по выпуску 40 «<a class="ref" href="/a/pasport-horoshey-tvari/">Паспорт хорошей твари</a>». Авторы объяснили, что собеседования один на один с мастером придумали, чтобы незаметно отделить Дана Балана от отряда (сначала хотели надеть остальным наушники, но они не сработали). Рассказали, как в ПЧК устроено дьяблери (вампир выпивает позвоночник другого вампира и получает его силу и личность), и признались, что спасбросок Дана Балана против личности <a class="ref" href="/c/vladimir-vinokus/">Винокуса</a> отложили на будущие выпуски. Ещё уточнили устройство королевской инквизиции и замка Насрат, а также что новый <a class="ref" href="/c/kudrigar/">Кудрегар</a> — лишь его потомок из семян.</p>
     <div class="ep-nav"><a class="ytb" href="https://youtu.be/xeMzbeaWtQg" target="_blank" rel="noopener">▶ Смотреть на YouTube</a>
       <button class="btn" data-copy="/pod/qa40/">Скопировать ссылку</button><a class="btn" href="/pod/qa39/">← Подкаст по #39</a><a class="btn" href="/pod/qa41-42/">Подкаст по #41 и #42 →</a></div>
@@ -73,6 +75,16 @@ document.querySelectorAll('.ptfilter').forEach(f => f.addEventListener('click', 
   const box = f.parentElement;
   box.querySelectorAll('.pnote').forEach(n => n.hidden = !!b.dataset.t && n.dataset.type !== b.dataset.t);
 }));
+</script><script>
+// таймкоды этого подкаста перематывают встроенное видео
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://youtu.be/xeMzbeaWtQg"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  const f = document.querySelector('.podvideo iframe'); if (!f) return;
+  e.preventDefault();
+  const t = new URL(a.href).searchParams.get('t') || 0;
+  f.src = 'https://www.youtube-nocookie.com/embed/xeMzbeaWtQg?autoplay=1&start=' + t;
+  f.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
 </script>
 </body>
 </html>
