@@ -36,25 +36,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 
-<div class="topbar"><div class="in">
-  <span class="brand">Хроники <b>Понии</b></span>
-  <nav class="tabs" role="tablist">
-    <button role="tab" data-tab="chron" aria-selected="true">Хронология</button>
-    <button role="tab" data-tab="map" aria-selected="false">Карта ветвей</button>
-    <button role="tab" data-tab="eps" aria-selected="false">Выпуски</button>
-    <button role="tab" data-tab="cast" aria-selected="false">Участники</button>
-    <button role="tab" data-tab="db" aria-selected="false">Персонажи</button>
-    <button role="tab" data-tab="graph" aria-selected="false">Связи персонажей</button>
-    <button role="tab" data-tab="lore" aria-selected="false">Лор</button>
-    <button role="tab" data-tab="chars" aria-selected="false">Герои по выпускам</button>
-    <a class="tablink" href="/map/">Карты Понии</a>
-    <a class="tablink" href="/place/">Места</a>
-    <a class="tablink" href="/a/">Артефакты</a>
-    <a class="tablink" href="/pod/">Подкасты</a>
-  </nav>
+<script>document.documentElement.classList.add('nav-js')</script>
+<header class="site-nav no-sub">
+<div class="nav-desk">
+<div class="nav-row1"><div class="nav-in">
+<a class="brand" href="/">Хроники <b>Понии</b></a>
+<nav class="nav-main" aria-label="Разделы"><ul><li><a class="nav-sec" href="/#chron" data-sec="0" data-label="Сюжет">Сюжет</a></li><li><a class="nav-sec" href="/#eps" data-sec="1" data-label="Выпуски">Выпуски</a></li><li><a class="nav-sec" href="/#db" data-sec="2" data-label="Мир Понии">Мир Понии</a></li><li><a class="nav-sec" href="/pod/" data-sec="3" data-label="Медиа">Медиа</a></li></ul></nav>
+<div class="nav-btns"><button class="nav-btn nav-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav-panel"><svg class="i-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
 </div></div>
+<div class="nav-row2"><div class="nav-in"><nav class="nav-sub" aria-label="Подразделы"><ul class="nav-group" id="nav-g-plot" data-sec="0" hidden><li><a class="nav-pill" href="/#chron" data-match="/#chron" data-label="Хронология">Хронология</a></li><li><a class="nav-pill" href="/#map" data-match="/#map" data-label="Карта ветвей">Карта ветвей</a></li></ul><ul class="nav-group" id="nav-g-eps" data-sec="1" hidden><li><a class="nav-pill" href="/#eps" data-match="/#eps /ep/ /watch/" data-label="Выпуски">Выпуски</a></li><li><a class="nav-pill" href="/#cast" data-match="/#cast /p/" data-label="Участники">Участники</a></li><li><a class="nav-pill" href="/#chars" data-match="/#chars" data-label="Герои по выпускам">Герои по выпускам</a></li></ul><ul class="nav-group" id="nav-g-world" data-sec="2" hidden><li><a class="nav-pill" href="/#db" data-match="/#db /c/" data-label="Персонажи">Персонажи</a></li><li><a class="nav-pill" href="/#graph" data-match="/#graph" data-label="Связи персонажей">Связи персонажей</a></li><li><a class="nav-pill" href="/#lore" data-match="/#lore" data-label="Лор">Лор</a></li><li><a class="nav-pill" href="/place/" data-match="/place/" data-label="Места">Места</a></li><li><a class="nav-pill" href="/a/" data-match="/a/" data-label="Артефакты">Артефакты</a></li><li><a class="nav-pill" href="/map/" data-match="/map/" data-label="Карты Понии">Карты Понии</a></li></ul><ul class="nav-group" id="nav-g-media" data-sec="3" hidden><li><a class="nav-pill" href="/pod/" data-match="/pod/" data-label="Подкасты">Подкасты</a></li></ul></nav></div></div>
+</div>
+<div class="nav-panel" id="nav-panel"><nav class="nav-sheet" aria-label="Разделы"><div class="nav-card" data-sec="0"><button class="nav-acc" type="button" aria-expanded="false" aria-controls="nav-m-plot"><span>Сюжет</span><svg class="nav-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="nav-rows" id="nav-m-plot" data-sec="0"><a class="nav-row" href="/#chron" data-match="/#chron" data-label="Хронология">Хронология</a><a class="nav-row" href="/#map" data-match="/#map" data-label="Карта ветвей">Карта ветвей</a></div></div><div class="nav-card" data-sec="1"><button class="nav-acc" type="button" aria-expanded="false" aria-controls="nav-m-eps"><span>Выпуски</span><svg class="nav-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="nav-rows" id="nav-m-eps" data-sec="1"><a class="nav-row" href="/#eps" data-match="/#eps /ep/ /watch/" data-label="Выпуски">Выпуски</a><a class="nav-row" href="/#cast" data-match="/#cast /p/" data-label="Участники">Участники</a><a class="nav-row" href="/#chars" data-match="/#chars" data-label="Герои по выпускам">Герои по выпускам</a></div></div><div class="nav-card" data-sec="2"><button class="nav-acc" type="button" aria-expanded="false" aria-controls="nav-m-world"><span>Мир Понии</span><svg class="nav-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="nav-rows" id="nav-m-world" data-sec="2"><a class="nav-row" href="/#db" data-match="/#db /c/" data-label="Персонажи">Персонажи</a><a class="nav-row" href="/#graph" data-match="/#graph" data-label="Связи персонажей">Связи персонажей</a><a class="nav-row" href="/#lore" data-match="/#lore" data-label="Лор">Лор</a><a class="nav-row" href="/place/" data-match="/place/" data-label="Места">Места</a><a class="nav-row" href="/a/" data-match="/a/" data-label="Артефакты">Артефакты</a><a class="nav-row" href="/map/" data-match="/map/" data-label="Карты Понии">Карты Понии</a></div></div><div class="nav-card" data-sec="3"><a class="nav-acc" href="/pod/" data-match="/pod/"><span>Медиа</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><a class="nav-cta" href="/#chron"><span>Сюжет: Хронология</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></nav></div>
+<script src="/assets/nav.js" defer></script>
+</header>
 
-<div class="wrap"><div class="page">
+<main class="wrap"><div class="page">
   <header class="hero">
     <span class="eyebrow">Подземелья Чикен Карри · фанатская летопись</span>
     <h1>Хроники Понии</h1>
@@ -135,7 +131,7 @@
 
   <footer id="foot"></footer>
   <dialog id="chardlg" aria-label="Карточка персонажа"><button class="x" id="dlgclose" aria-label="Закрыть">×</button><div id="dlgbody"></div></dialog>
-</div></div>
+</div></main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
 <script>
@@ -170,19 +166,16 @@ $('#foot').innerHTML = DATA.footer;
 
 /* вкладки */
 const TABS = ['chron','map','eps','cast','db','graph','lore','chars'];
-const tabBtns = document.querySelectorAll('nav.tabs button');
 let graphReady = false;
 function showTab(t, sub){
   if (!TABS.includes(t)) t = 'chron';
-  tabBtns.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
-  const cur = document.querySelector('nav.tabs button[aria-selected="true"]'); if (cur) cur.scrollIntoView({inline:'center', block:'nearest'});
   TABS.forEach(k => $('#tab-'+k).hidden = k !== t);
   if (t === 'graph' && !graphReady) { graphReady = true; renderGraph(); }
   if (t === 'map') { renderMap(); if (selected) setTimeout(() => scrollToStation(selected), 30); }
   try{ localStorage.setItem('pchk-tab', t) }catch(e){}
   const h = '#' + t + (sub ? '/' + sub : ''); if (location.hash !== h) history.replaceState(null, '', h);
+  if (window.navSync) navSync();
 }
-tabBtns.forEach(b => b.onclick = () => showTab(b.dataset.tab));
 function route(){
   const [t, sub] = decodeURIComponent(location.hash.slice(1)).split('/');
   if (!TABS.includes(t)) return false;
